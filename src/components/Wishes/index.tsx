@@ -40,7 +40,6 @@ export const Wishes = () => {
                 </p>
             </div>
             <div className="px-4 md:px-6 bg-transparent flex flex-row items-center justify-center">
-                <Spinner className="w-8 h-8 text-gray-200 fill-blue-600" />
 
                 <div className="flex flex-wrap justify-center gap-2">
                     {data ? (
