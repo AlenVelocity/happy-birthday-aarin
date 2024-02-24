@@ -22,6 +22,7 @@ import {
 import { useState } from 'react'
 import { ScrollArea } from '@radix-ui/react-scroll-area'
 import Image from 'next/image'
+import { ClientOnly } from '@/components/ClientOnly'
 
 const images = new Array(23).fill('').map((_, i) => `/${i}.png`)
 
@@ -46,10 +47,6 @@ const deleteWish = async (id: string) => {
 const AddWish = () => {
     const isClient = useIsClient()
   
-    if (isClient === false) {
-      return null
-    }
-
     const form = useForm({
         resolver: zodRes(wishSchema),
         mode: 'onChange',
@@ -221,4 +218,8 @@ const AddWish = () => {
     )
 }
 
-export default AddWish
+export default () => (
+    <ClientOnly>
+        <AddWish />
+    </ClientOnly>
+)
