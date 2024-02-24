@@ -40,7 +40,6 @@ export const Wishes = () => {
                 </p>
             </div>
             <div className="px-4 md:px-6 bg-transparent flex flex-row items-center justify-center">
-
                 <div className="flex flex-wrap justify-center gap-2">
                     {data ? (
                         data.map((wish, index) => (

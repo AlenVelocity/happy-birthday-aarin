@@ -45,7 +45,6 @@ const deleteWish = async (id: string) => {
 }
 
 const AddWish = () => {
-  
     const form = useForm({
         resolver: zodRes(wishSchema),
         mode: 'onChange',
