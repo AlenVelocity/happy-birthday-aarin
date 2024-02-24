@@ -3,7 +3,7 @@
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Wish } from '@prisma/client'
-import { useLocalStorage } from '@uidotdev/usehooks'
+import { useIsClient, useLocalStorage } from '@uidotdev/usehooks'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver as zodRes } from '@hookform/resolvers/zod'
@@ -44,7 +44,11 @@ const deleteWish = async (id: string) => {
 }
 
 const AddWish = () => {
-    console.log(images)
+    const isClient = useIsClient()
+  
+    if (isClient === false) {
+      return null
+    }
 
     const form = useForm({
         resolver: zodRes(wishSchema),
