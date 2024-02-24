@@ -2,6 +2,7 @@ import Header from '@/components/Header'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme/theme-provider'
 import Footer from '@/components/Footer'
+import RQProvider from '@/utils/RQProvider'
 
 export const metadata = {}
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -36,7 +37,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <body>
                 <ThemeProvider attribute="class" defaultTheme="light">
                     <Header />
-                    <main className="bg-gradient-to-t from-[#FF4] via-pink-300 to-pink-500">{children}</main>
+                    <RQProvider>
+                        <main className="bg-gradient-to-t from-[#FF4] via-pink-300 to-pink-500">{children}</main>
+                    </RQProvider>
                     <Footer />
                 </ThemeProvider>
             </body>
