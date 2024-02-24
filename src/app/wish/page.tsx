@@ -45,14 +45,12 @@ const deleteWish = async (id: string) => {
 }
 
 const AddWish = () => {
-    const isClient = useIsClient()
   
     const form = useForm({
         resolver: zodRes(wishSchema),
         mode: 'onChange',
         defaultValues: { from: '', wish: '', image: images[0] }
     })
-
     const [wishes, setWishes] = useLocalStorage<Wish[]>('my-wishes', [])
     const [currentImage, setCurrentImage] = useState<string>(images[0])
     const [isSending, setIsSending] = useState(false)
@@ -195,7 +193,7 @@ const AddWish = () => {
                                     <CardHeader>
                                         <h1 className="text-lg font-bold">{wish.from}</h1>
                                     </CardHeader>
-                                    <CardContent>
+                                    <CardContent className="flex flex-col items-center space-y-4">
                                         <Image src={wish.image ?? ''} alt="Wish Image" width={128} height={128} />
                                         <p>{wish.wish}</p>
                                         <Button
